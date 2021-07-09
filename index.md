@@ -1,4 +1,7 @@
-## Welcome to GitHub Pages
+## Welcome to my in-progess thing
+
+# It's in progress, you should leave
+
 
 You can use the [editor on GitHub](https://github.com/Jamalam360/jamalam360.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
 
