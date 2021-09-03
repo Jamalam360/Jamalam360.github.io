@@ -18,7 +18,7 @@ With that said, here are some cool things I've made:
 	A mod I made for the YouTuber RedFox that scales entities down when you hit 	them, or up when they heal
 - Workshop:
 	A WIP Vanilla+ tech mod created in collaboration with 2 other modders
-    
+- Loads of other smaller mods not worth mentioning here
 I've also created lots more random, non MineCraft related projects like Discord bots.
 
 If you want to reach out to me about commissioning a mod, please speak directly to me on discord @jamalam#0001.
