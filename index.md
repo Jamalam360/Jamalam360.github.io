@@ -1,4 +1,4 @@
-## Welcome to 
+## Welcome to a website with stuff on it
 
  I'm using this as a place to keep a record of some of the cool projects I've done. 
 You can find me elsewhere:
