@@ -1,9 +1,9 @@
-## Welcome to a website with stuff on it
+## Jamalam360
 
- I'm using this as a place to keep a record of some of the cool projects I've done. 
+This is a place to keep a record of my most interesting projects.
 You can find me elsewhere:
 - On Discord at [my discord server](https://discord.gg/MqXWZaKUvp)
-- On GitHub at [my personal profile](https://github.com/Jamalam360) or [my modding organisation](https://github.com/JamCoreModding)
+- On GitHub at [my personal profile](https://github.com/Jamalam360), [my modding organisation](https://github.com/JamCoreModding) or [my discord organisation](https://github.com/JamCoreDiscord)
 
 With that said, here are some cool things I've made:
 - Reaping Mod:
@@ -15,11 +15,11 @@ With that said, here are some cool things I've made:
 	A mod I made for the YouTuber SocksFor1 that adds loads of new enchantments
 	![withers.png]({{site.baseurl}}/img/withers.png)
 - EntityScaling:
-	A mod I made for the YouTuber RedFox that scales entities down when you hit 	them, or up when they heal
+	A mod I made for the YouTuber RedFox that scales entities down when you hit them, or up when they heal
 - Workshop:
 	A WIP Vanilla+ tech mod created in collaboration with 2 other modders
 - Loads of other smaller mods not worth mentioning here
-I've also created lots more random, non MineCraft related projects like Discord bots.
+I've also created lots more random, non MineCraft related projects like Discord bots, the most notable of which is [Pinguino](https://github.com/JamCoreDiscord/Pinguino)
 
 If you want to reach out to me about commissioning a mod, please speak directly to me on discord @jamalam#0001.
 
