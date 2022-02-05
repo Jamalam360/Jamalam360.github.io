@@ -19,7 +19,7 @@ const links: Record<string, string> = {
 }
 
 Object.keys(links).forEach(element => {
-    html = html.replaceAll("[" + element + "]", `<a href="${links[element]}" class="text-success"><i>${element}<i></a>`);
+    html = html.replaceAll("[" + element + "]", `<a href="${links[element]}" class="text-success"><i>${element}</i></a>`);
 });
 
 await Deno.writeTextFile("index.html", html);
