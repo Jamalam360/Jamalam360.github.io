@@ -1,7 +1,7 @@
 let html = await Deno.readTextFile("./source.html");
 
 const links: Record<string, string> = {
-    Blog: "https://jamalama.tech/blog",
+    Blog: "https://jamalam.tech/blog",
     Deno: "https://deno.land/",
     Kordex: "https://github.com/Kord-Extensions/kord-extensions",
     Kotlin: "https://kotlinlang.org/",
