@@ -1,6 +1,5 @@
 import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
 
-const linkRegex = /\$\[(.*?)\]/;
 let html = await Deno.readTextFile("./source/source.html");
 
 function linkify(html: string): string {
@@ -33,8 +32,7 @@ function linkify(html: string): string {
 }
 
 async function markdownify(html: string): Promise<string> {
-  const matches = linkRegex.exec(html);
-  console.log(matches);
+  const matches = /\$\[(.*?)\]/.exec(html);
 
   if (matches) {
     for (let i = 0; i < matches.length; i += 2) {
@@ -48,6 +46,29 @@ async function markdownify(html: string): Promise<string> {
             `./source/markdown/${link}.md`,
           ),
         ).content.replaceAll("<p>", "").replaceAll("</p>", ""),
+      );
+    }
+  }
+
+  return html;
+}
+
+function classifyLinks(html: string): string {
+  const matches = /S<a.*<\/a>/
+    .exec(
+      html,
+    );
+
+  console.log(matches);
+
+  if (matches) {
+    for (let i = 0; i < matches.length; i++) {
+      const replace = matches[i];
+
+      html = html.replaceAll(
+        replace,
+        replace.substring(1, 3) + ' class="text-success"' +
+          replace.substring(3),
       );
     }
   }
@@ -77,6 +98,7 @@ function format(html: string): string {
 
 html = linkify(html);
 html = await markdownify(html);
+html = classifyLinks(html);
 html = format(html);
 
 await Deno.writeTextFile("index.html", html);
