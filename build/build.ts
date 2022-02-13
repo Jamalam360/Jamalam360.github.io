@@ -1,4 +1,7 @@
-let html = await Deno.readTextFile("./source.html");
+import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
+
+const linkRegex = /\$\[(.*?)\]/;
+let html = await Deno.readTextFile("./source/source.html");
 
 function linkify(html: string): string {
   const links: Record<string, string> = {
@@ -29,6 +32,51 @@ function linkify(html: string): string {
   return html;
 }
 
+async function markdownify(html: string): Promise<string> {
+  const matches = linkRegex.exec(html);
+  console.log(matches);
+
+  if (matches) {
+    for (let i = 0; i < matches.length; i += 2) {
+      const replace = matches[i];
+      const link = matches[i + 1];
+
+      html = html.replaceAll(
+        replace,
+        Marked.parse(
+          await Deno.readTextFile(
+            `./source/markdown/${link}.md`,
+          ),
+        ).content,
+      );
+    }
+  }
+
+  return html;
+}
+
+function format(html: string): string {
+  var tab = "\t";
+  var result = "";
+  var indent = "";
+
+  html.split(/>\s*</).forEach(function (element) {
+    if (element.match(/^\/\w/)) {
+      indent = indent.substring(tab.length);
+    }
+
+    result += indent + "<" + element + ">\r\n";
+
+    if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith("input")) {
+      indent += tab;
+    }
+  });
+
+  return result.substring(1, result.length - 3);
+}
+
 html = linkify(html);
+html = await markdownify(html);
+html = format(html);
 
 await Deno.writeTextFile("index.html", html);
