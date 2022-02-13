@@ -2,42 +2,17 @@ import { Marked } from "https://deno.land/x/markdown@v2.0.0/mod.ts";
 
 let html = await Deno.readTextFile("./source/source.html");
 
-function linkify(html: string): string {
-  const links: Record<string, string> = {
-    Blog: "https://jamalam.tech/blog",
-    Deno: "https://deno.land/",
-    Kordex: "https://github.com/Kord-Extensions/kord-extensions",
-    Kotlin: "https://kotlinlang.org/",
-    TypeScript: "https://www.typescriptlang.org/",
-    TS: "https://www.typescriptlang.org/",
-    JavaScript: "https://www.javascript.com/",
-    JS: "https://www.javascript.com/",
-    Java: "https://www.java.com/",
-    Discord: "https://discord.com/",
-    QuiltMC: "https://github.com/QuiltMC",
-    Quilt: "https://github.com/QuiltMC",
-    Fabric: "https://fabricmc.net/",
-    Python: "https://www.python.org/",
-    Aleph: "https://alephjs.org",
-  };
-
-  Object.keys(links).forEach((element) => {
-    html = html.replaceAll(
-      "[" + element + "]",
-      `<a href="${links[element]}" class="text-success"><i>${element}</i></a>`,
-    );
-  });
-
-  return html;
-}
-
 async function markdownify(html: string): Promise<string> {
-  const matches = /\$\[(.*?)\]/.exec(html);
+  const matches = html.matchAll(/\$\[(.*?)\]/g);
+
+  console.log(matches);
 
   if (matches) {
-    for (let i = 0; i < matches.length; i += 2) {
-      const replace = matches[i];
-      const link = matches[i + 1];
+    for (let match of matches) {
+      const replace = match[0];
+      const link = match[1];
+
+      console.log(`Found Markdown substition link ${replace}`);
 
       html = html.replaceAll(
         replace,
@@ -53,17 +28,14 @@ async function markdownify(html: string): Promise<string> {
   return html;
 }
 
-function classifyLinks(html: string): string {
-  const matches = /S<a.*<\/a>/
-    .exec(
-      html,
-    );
-
-  console.log(matches);
+function styliseLinks(html: string): string {
+  const matches = html.matchAll(/S<a.*?<\/a>/g);
 
   if (matches) {
-    for (let i = 0; i < matches.length; i++) {
-      const replace = matches[i];
+    for (let match of matches) {
+      const replace = match[0];
+
+      console.log(`Found link to be stylised with text-success ${replace}`);
 
       html = html.replaceAll(
         replace,
@@ -96,9 +68,8 @@ function format(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-html = linkify(html);
 html = await markdownify(html);
-html = classifyLinks(html);
+html = styliseLinks(html);
 html = format(html);
 
 await Deno.writeTextFile("index.html", html);
