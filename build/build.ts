@@ -47,7 +47,7 @@ async function markdownify(html: string): Promise<string> {
           await Deno.readTextFile(
             `./source/markdown/${link}.md`,
           ),
-        ).content,
+        ).content.replaceAll("<p>", "").replaceAll("</p>", ""),
       );
     }
   }
