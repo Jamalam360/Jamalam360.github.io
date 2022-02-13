@@ -1,6 +1,7 @@
 let html = await Deno.readTextFile("./source.html");
 
-const links: Record<string, string> = {
+function linkify(html: string): string {
+  const links: Record<string, string> = {
     Blog: "https://jamalam.tech/blog",
     Deno: "https://deno.land/",
     Kordex: "https://github.com/Kord-Extensions/kord-extensions",
@@ -15,11 +16,19 @@ const links: Record<string, string> = {
     Quilt: "https://github.com/QuiltMC",
     Fabric: "https://fabricmc.net/",
     Python: "https://www.python.org/",
-    Aleph: "https://alephjs.org"
+    Aleph: "https://alephjs.org",
+  };
+
+  Object.keys(links).forEach((element) => {
+    html = html.replaceAll(
+      "[" + element + "]",
+      `<a href="${links[element]}" class="text-success"><i>${element}</i></a>`,
+    );
+  });
+
+  return html;
 }
 
-Object.keys(links).forEach(element => {
-    html = html.replaceAll("[" + element + "]", `<a href="${links[element]}" class="text-success"><i>${element}</i></a>`);
-});
+html = linkify(html);
 
 await Deno.writeTextFile("index.html", html);

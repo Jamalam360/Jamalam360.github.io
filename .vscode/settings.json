@@ -1,8 +1,10 @@
 {
-    "deno.enable": true,
-    "deno.lint": false,
-    "deno.unstable": false,
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///home/james/Desktop/Development/Web/jamalam360.github.io/.github/workflows/build.yml"
-    }
+  "deno.enable": true,
+  "deno.lint": false,
+  "deno.unstable": false,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "editor.formatOnSave": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///home/james/Desktop/Development/Web/jamalam360.github.io/.github/workflows/build.yml"
+  }
 }
