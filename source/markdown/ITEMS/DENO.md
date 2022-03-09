@@ -1,4 +1,4 @@
-I work with [_Deno_](https://deno.land) quite a lot using TypeScript. Some
+I work with the [_Deno_](https://deno.land) runtime using TypeScript. Some
 projects I have created include:
 [Discord GitHub Releases](https://github.com/Jamalam360/DiscordGitHubReleases),
 [dog.jamalam.tech](https://github.com/dog-jamalam-tech), an
