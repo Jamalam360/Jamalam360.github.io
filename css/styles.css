@@ -64,6 +64,10 @@
   --bs-body-bg: #fff;
 }
 
+.not-a-link {
+  cursor: default;
+}
+
 *,
 *::before,
 *::after {
